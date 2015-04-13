@@ -24,7 +24,6 @@
 //
 
 #import "REFrostedContainerViewController.h"
-#import "UIImage+REFrostedViewController.h"
 #import "UIView+REFrostedViewController.h"
 #import "UIViewController+REFrostedViewController.h"
 #import "REFrostedViewController.h"
@@ -67,16 +66,15 @@
     self.containerView.clipsToBounds = YES;
     [self.view addSubview:self.containerView];
     
-    if (self.frostedViewController.liveBlur) {
+    if (self.frostedViewController.useBlur) {
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:self.view.bounds];
         toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         toolbar.barStyle = (UIBarStyle)self.frostedViewController.liveBlurBackgroundStyle;
         [self.containerView addSubview:toolbar];
     } else {
-        self.backgroundImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-        [self.containerView addSubview:self.backgroundImageView];
+        self.containerView.backgroundColor = [UIColor whiteColor];
     }
-    
+     
     if (self.frostedViewController.menuViewController) {
         [self addChildViewController:self.frostedViewController.menuViewController];
         self.frostedViewController.menuViewController.view.frame = self.containerView.bounds;
