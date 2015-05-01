@@ -29,6 +29,7 @@
 BOOL REFrostedViewControllerUIKitIsFlatMode(void)
 {
     static BOOL isUIKitFlatMode = NO;
+#ifndef WATCHKIT
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         if (floor(NSFoundationVersionNumber) > 993.0) {
@@ -41,5 +42,6 @@ BOOL REFrostedViewControllerUIKitIsFlatMode(void)
             }
         }
     });
+#endif
     return isUIKitFlatMode;
 }
