@@ -77,7 +77,7 @@
     _containerViewController = [[REFrostedContainerViewController alloc] init];
     _containerViewController.frostedViewController = self;
     _menuViewSize = CGSizeZero;
-    _useBlur = YES;
+//    _useBlur = YES;
     _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:_containerViewController action:@selector(panGestureRecognized:)];
     _automaticSize = YES;
 }
@@ -95,6 +95,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.blurView.overBlurView.backgroundColor = [UIColor redColor];
     [self re_displayController:self.contentViewController frame:self.view.bounds];
 }
 
@@ -106,6 +107,13 @@
 - (UIViewController *)childViewControllerForStatusBarHidden
 {
     return self.contentViewController;
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    [self.blurView setNeedsLayout];
 }
 
 #pragma mark -

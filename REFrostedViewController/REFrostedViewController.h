@@ -23,7 +23,7 @@
 // THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#import "PWBlurViewController.h"
 #import "UIViewController+REFrostedViewController.h"
 
 typedef NS_ENUM(NSInteger, REFrostedViewControllerDirection) {
@@ -40,7 +40,7 @@ typedef NS_ENUM(NSInteger, REFrostedViewControllerLiveBackgroundStyle) {
 
 @protocol REFrostedViewControllerDelegate;
 
-@interface REFrostedViewController : UIViewController
+@interface REFrostedViewController : PWBlurViewController
 
 @property (strong, readonly, nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
 @property (assign, readwrite, nonatomic) BOOL panGestureEnabled;
@@ -61,7 +61,7 @@ typedef NS_ENUM(NSInteger, REFrostedViewControllerLiveBackgroundStyle) {
 @property (assign, readwrite, nonatomic) BOOL limitMenuViewSize;
 @property (assign, readwrite, nonatomic) CGSize menuViewSize;
 @property (assign, readwrite, nonatomic) REFrostedViewControllerLiveBackgroundStyle liveBlurBackgroundStyle; // iOS 7 only
-@property (nonatomic) BOOL useBlur;
+//@property (nonatomic) BOOL useBlur;
 @property (weak, readwrite, nonatomic) id<REFrostedViewControllerDelegate> delegate;
 @property (strong, readwrite, nonatomic) UIViewController *contentViewController;
 @property (strong, readwrite, nonatomic) UIViewController *menuViewController;
